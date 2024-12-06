@@ -21,6 +21,9 @@ var config = {
         width: 800,
         height: 450
   },
+  dom: {
+        createContainer: true
+    },
   powerPreference:"high-performance"
 };
 

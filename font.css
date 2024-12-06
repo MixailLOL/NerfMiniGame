@@ -5,15 +5,15 @@
 
 @font-face {
     font-family: EurostileExtended;
-    src: url('./assets/fonts/EurostileBold.ttf');
+    src: url('./assets/fonts/EurostileExtended.ttf');
 }
 
 @font-face {
     font-family: EurostileOblique;
-    src: url('./assets/fonts/EurostileBold.ttf');
+    src: url('./assets/fonts/EurostileOblique.ttf');
 }
 
 @font-face {
     font-family: EuroStyleNormal;
-    src: url('./assets/fonts/EurostileBold.ttf');
+    src: url('./assets/fonts/EuroStyleNormal.ttf');
 }
