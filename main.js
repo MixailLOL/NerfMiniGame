@@ -3,6 +3,7 @@ import Menu from './scenes/menu.js'
 import Splash from './scenes/splash.js'
 import GameOver from './scenes/gameOver.js'
 import Achivments from './scenes/achivments.js'
+import ViewRange from './scenes/viewrange.js'
 
 var config = {
     type: Phaser.AUTO,
@@ -15,7 +16,7 @@ var config = {
         }
     },
     firstLoad: true,
-    scene: [Splash, Menu, GamePlay, GameOver, Achivments],
+    scene: [Splash, Menu, GamePlay, GameOver, ViewRange],
     scale: {
         parent: 'mygame',
         width: 800,

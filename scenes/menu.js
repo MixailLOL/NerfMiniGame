@@ -31,7 +31,7 @@ class Menu extends Phaser.Scene {
         .setOrigin(0, 0)
         .setPadding(50, 10)
         .on('pointerover', () => this.buttonViewRange.setStyle({ backgroundColor: '#f47921' }))
-        .on('pointerdown', ()=>{  this.scene.stop('Menu'); this.scene.start('GamePlay')})
+        .on('pointerdown', ()=>{  this.scene.stop('Menu'); this.scene.start('ViewRange')})
         .on('pointerout', () => this.buttonViewRange.setStyle({ backgroundColor: '#09d1e1' }));
 
         this.buttonWatchVideo = this.add.text(800, 300, "WATCH VIDEO", textConfig).setInteractive()
