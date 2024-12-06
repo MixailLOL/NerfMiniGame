@@ -6,8 +6,8 @@ import Achivments from './scenes/achivments.js'
 
 var config = {
     type: Phaser.AUTO,
-    width: window.innerWidth*10,
-    height: window.innerHeight*5,
+    width: 800,
+    height: 450,
     physics: {
         default: 'arcade',
         arcade: {
@@ -18,9 +18,8 @@ var config = {
     scene: [Splash, Menu, GamePlay, GameOver, Achivments],
     scale: {
         parent: 'mygame',
-        mode: Phaser.Scale.EXACT_FIT,
-        width: window.innerWidth,
-        height: window.innerHeight
+        width: 800,
+        height: 450
   },
   powerPreference:"high-performance"
 };

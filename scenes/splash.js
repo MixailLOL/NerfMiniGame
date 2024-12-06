@@ -30,6 +30,12 @@ class Splash extends Phaser.Scene {
             });
         }
         else{
+            this.load.image('bg', 'assets/backgrounds/bg.png' );
+            this.load.image('bgStart', 'assets/backgrounds/bgStart.png' );
+            this.load.image('logoSmall', 'assets/logoSmall.png' );
+            this.load.image('logo', 'assets/logo.png' );
+            this.load.image('menuGuns', 'assets/menuGuns.png' );
+
             this.load.atlas('player', 'assets/player/player.png','assets/player/playerAtlas.json' );
             this.load.image('portalBack', 'assets/objects/portalBack.png');
             this.load.image('portalFront', 'assets/objects/portalFront.png');
