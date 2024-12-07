@@ -5,11 +5,12 @@ class ViewRange extends Phaser.Scene {
       super("ViewRange");
     }
     create(){
+        this.isAboutToSwipe;
         this.gun;
         this.guns = ['gunCommander', 'gunShockwave', 'gunEcho', 'gunVolt'];
-        let nextGun = 0;
+        this.nextGun = 0;
         var BigButnTextConfig={color:'#02132a',fontFamily: 'EurostileBold', fontSize: '25pt'};
-        this.viewNextGun(nextGun);
+        this.viewNextGun(this.nextGun);
 
         let background = this.add.image(0, 0 ,'viewRangeBg').setName("Background").setOrigin(0, 0);
         background.depth = -3;
@@ -17,9 +18,9 @@ class ViewRange extends Phaser.Scene {
         logo = -3;
         this.swipeDescription = this.add.text(310, 40, "swipe left and right to view the range!", {color:'#ffffff',fontFamily: 'EurostileOblique', fontSize: '20pt'}).setOrigin(0, 0);
         this.arrowRight = this.add.image(716, 172, "arrow").setInteractive().setOrigin(0, 0)
-        .on('pointerdown', ()=>{ nextGun = (nextGun+1)%this.guns.length; this.viewNextGun(nextGun)});
+        .on('pointerdown', ()=>{ this.nextGun = (this.nextGun+1)%this.guns.length; this.viewNextGun(this.nextGun)});
         this.arrowLeft = this.add.image(42, 172, "arrow").setInteractive().setOrigin(0, 0)
-        .on('pointerdown', ()=>{ nextGun = (nextGun-1)%this.guns.length;this.viewNextGun(nextGun)});
+        .on('pointerdown', ()=>{ this.nextGun = (this.nextGun-1)%this.guns.length;this.viewNextGun(this.nextGun)});
         this.arrowLeft.flipX = true;
 
         this.buttonVisitNerf = this.add.text(800, 365, "VISIT NERF", BigButnTextConfig).setInteractive()
@@ -38,6 +39,23 @@ class ViewRange extends Phaser.Scene {
         .on('pointerdown', ()=>{  this.scene.stop('ViewRange'); this.scene.start('Menu')})
         .on('pointerout', () => this.buttonGoBack.setStyle({ backgroundColor: '#09d1e1' }));
     }
+
+    update() {
+        if (this.input.activePointer.isDown) {
+            if(this.input.activePointer.velocity.x > 100){
+                this.isAboutToSwipe = 1;
+            }
+            if(this.input.activePointer.velocity.x < -100){
+                this.isAboutToSwipe = -1;
+            }
+        }
+        if(!this.input.activePointer.isDown && this.isAboutToSwipe!=0){
+            this.nextGun = (this.nextGun+this.isAboutToSwipe)%this.guns.length
+            this.viewNextGun(this.nextGun)
+            this.isAboutToSwipe = 0;
+        }
+    }
+
 
     viewNextGun(nextGun){
         if(this.gun != undefined){
