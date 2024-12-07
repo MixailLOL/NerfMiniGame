@@ -5,6 +5,7 @@ import GameOver from './scenes/gameOver.js'
 import Achivments from './scenes/achivments.js'
 import ViewRange from './scenes/viewRange.js'
 import ChooseGun from './scenes/chooseGun.js'
+import GameEnd from './scenes/gameEnd.js'
 
 var config = {
     type: Phaser.AUTO,
@@ -17,7 +18,7 @@ var config = {
         }
     },
     firstLoad: true,
-    scene: [Splash, Menu, GamePlay, GameOver, ViewRange, ChooseGun],
+    scene: [Splash, Menu, GamePlay, GameOver, ViewRange, ChooseGun, GameEnd],
     scale: {
         parent: 'mygame',
         width: 800,

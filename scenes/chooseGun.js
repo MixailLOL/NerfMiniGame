@@ -5,7 +5,7 @@ class ChooseGun extends Phaser.Scene {
       super("ChooseGun");
     }
     create(){
-        this.isAboutToSwipe;
+        this.isAboutToSwipe = 0;
         this.gun;
         this.guns = ['gunCommander', 'gunShockwave', 'gunEcho', 'gunVolt'];
         this.nextGun = 0;
