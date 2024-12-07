@@ -3,7 +3,7 @@ import Menu from './scenes/menu.js'
 import Splash from './scenes/splash.js'
 import GameOver from './scenes/gameOver.js'
 import Achivments from './scenes/achivments.js'
-import ViewRange from './scenes/viewrange.js'
+import ViewRange from './scenes/viewRange.js'
 
 var config = {
     type: Phaser.AUTO,
