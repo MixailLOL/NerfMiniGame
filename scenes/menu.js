@@ -23,7 +23,7 @@ class Menu extends Phaser.Scene {
         .setOrigin(0, 0)
         .setPadding(50, 10)
         .on('pointerover', () => this.buttonPlay.setStyle({ backgroundColor: '#f47921' }))
-        .on('pointerdown', ()=>{  this.scene.stop('Menu'); this.scene.start('GamePlay')})
+        .on('pointerdown', ()=>{  this.scene.stop('Menu'); this.scene.start('ChooseGun')})
         .on('pointerout', () => this.buttonPlay.setStyle({ backgroundColor: '#09d1e1' }));
 
         this.buttonViewRange = this.add.text(0, 365, "VIEW RANGE", textConfig).setInteractive()
@@ -47,7 +47,7 @@ class Menu extends Phaser.Scene {
         .setOrigin(1, 0)
         .setPadding(50, 10)
         .on('pointerover', () => this.buttonVisitNerf.setStyle({ backgroundColor: '#f47921' }))
-        .on('pointerdown', ()=>{  this.scene.stop('Menu'); this.scene.start('GamePlay')})
+        .on('pointerdown', ()=>{ console.log("ok")})
         .on('pointerout', () => this.buttonVisitNerf.setStyle({ backgroundColor: '#09d1e1' }));
 
         this.textDescription = this.add.text(425, 50, "choose your blaster then shoot as many\ntargets as you can within the time limit!", {color:'#ffffff', fontFamily: 'EurostileOblique', fontSize: '15.94pt'}).setOrigin(0, 0);
@@ -58,7 +58,7 @@ class Menu extends Phaser.Scene {
         let domElement3 = this.add.dom(0, 0).createFromHTML(shadow).setOrigin(0, 0).setPosition(0,0);
         let videoBorder = '<div style="width: 640px; height: 360px; background-color: #09d1e1;" id="border"></div>'
         let domElement = this.add.dom(0, 0).createFromHTML(videoBorder).setOrigin(0, 0).setPosition(85,55);
-        let videoElem = '<div id="video"><video controls width=630 height=350><source src="/assets/videos/video.mp4" type="video/mp4"></video></div>'
+        let videoElem = '<div id="video"><video controls autoplay width=630 height=350><source src="/assets/videos/video.mp4" type="video/mp4"></video></div>'
         let domElement2 = this.add.dom(0, 0).createFromHTML(videoElem).setOrigin(0, 0).setPosition(90,60);
         let closeVidBtn = '<img src="assets/closeEclips.png" alt="Close Button" id="btmCloseVid">'
         let domElement4 = this.add.dom(0, 0).createFromHTML(closeVidBtn).setOrigin(0, 0).setPosition(676,65);
