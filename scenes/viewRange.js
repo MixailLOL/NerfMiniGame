@@ -1,3 +1,5 @@
+import GunDesc from '../system/gunsDescryption.js'
+
 class ViewRange extends Phaser.Scene {
     constructor() {
       super("ViewRange");
@@ -40,8 +42,20 @@ class ViewRange extends Phaser.Scene {
     viewNextGun(nextGun){
         if(this.gun != undefined){
             this.gun.destroy();
+            this.gunTitle.destroy();
+            this.gunDescryptionText.destroy();
         }
         this.gun = this.add.image(265, 225, ''+this.guns[Math.abs(nextGun)]).setInteractive().setOrigin(0.5, 0.5);
+
+        var titleTextConfig={color:'#09d1e1',fontFamily: 'Eurostile', fontSize: '28pt'};
+        var descTextConfig={color:'#ffffff',fontFamily: 'Eurostile', fontSize: '20pt'};
+        let gunName = this.guns[Math.abs(nextGun)];
+        this.gunTitle = this.add.text(576, 135, GunDesc[gunName][0], titleTextConfig)
+        .setOrigin(0.5, 0.5)
+        .setPadding(50, 10)
+        this.gunDescryptionText = this.add.text(576, 235, GunDesc[gunName][1], descTextConfig)
+        .setOrigin(0.5, 0.5)
+        .setPadding(50, 10)
     }
 }
 

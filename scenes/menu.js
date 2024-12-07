@@ -50,7 +50,7 @@ class Menu extends Phaser.Scene {
         .on('pointerdown', ()=>{  this.scene.stop('Menu'); this.scene.start('GamePlay')})
         .on('pointerout', () => this.buttonVisitNerf.setStyle({ backgroundColor: '#09d1e1' }));
 
-        this.textDescription = this.add.text(425, 50, "choose your blaster then shoot as many\ntargets as you can within the time limit!", {color:'#ffffff',fontFamily: 'EurostileOblique', fontSize: '15.94pt'}).setOrigin(0, 0);
+        this.textDescription = this.add.text(425, 50, "choose your blaster then shoot as many\ntargets as you can within the time limit!", {color:'#ffffff', fontFamily: 'EurostileOblique', fontSize: '15.94pt'}).setOrigin(0, 0);
     }
 
     showVideo (){
