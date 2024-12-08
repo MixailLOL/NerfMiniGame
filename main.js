@@ -1,8 +1,6 @@
 import GamePlay from './scenes/gamePlay.js'
 import Menu from './scenes/menu.js'
 import Splash from './scenes/splash.js'
-import GameOver from './scenes/gameOver.js'
-import Achivments from './scenes/achivments.js'
 import ViewRange from './scenes/viewRange.js'
 import ChooseGun from './scenes/chooseGun.js'
 import GameEnd from './scenes/gameEnd.js'
@@ -18,7 +16,7 @@ var config = {
         }
     },
     firstLoad: true,
-    scene: [Splash, Menu, GamePlay, GameOver, ViewRange, ChooseGun, GameEnd],
+    scene: [Splash, Menu, GamePlay, ViewRange, ChooseGun, GameEnd],
     scale: {
         parent: 'mygame',
         width: 800,

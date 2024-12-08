@@ -20,7 +20,7 @@ class GameEnd extends Phaser.Scene {
         this.scoreText = this.add.text(135, 250, "your score: ", {color:'#ffffff',fontFamily: 'EuroStileOblique', fontSize: '23.82pt'}).setOrigin(0, 0);
         this.scoreScore = this.add.text(140, 280, ""+this.score, {color:'#09d1e1',fontFamily: 'EuroStileOblique', fontSize: '64.41pt'}).setOrigin(0, 0);
 
-        this.gunImg = this.add.image(162, 200, this.gun).setOrigin(0.5, 0.5);
+        this.gunImg = this.add.image(150, 200, this.gun).setOrigin(0.5, 0.5);
 
         var BigButnTextConfig={color:'#02132a',fontFamily: 'EuroStileBold', fontSize: '25pt'};
         this.buttonVisitNerf = this.add.text(800, 365, "VISIT NERF", BigButnTextConfig).setInteractive()
@@ -39,10 +39,9 @@ class GameEnd extends Phaser.Scene {
         .on('pointerdown', ()=>{  this.scene.stop('GameEnd'); this.scene.start('Menu')})
         .on('pointerout', () => this.buttonGoBack.setStyle({ backgroundColor: '#09d1e1' }));
 
-        let videoBorder = '<div style="width: 500; height: 285px; background-color: #09d1e1;" id="border"></div>'
-        let domElement = this.add.dom(0, 0).createFromHTML(videoBorder).setOrigin(0, 0).setPosition(295,70);
-        //let videoElem = '<div id="video"><video controls autoplay width=490 height=275><source src="/assets/videos/video.mp4" type="video/mp4"></video></div>'
-        //let domElement2 = this.add.dom(0, 0).createFromHTML(videoElem).setOrigin(0, 0).setPosition(300,75);
+
+        let videoElem = '<div id="video"><video style="border: 4px solid #09d1e1;" controls autoplay width=485 height=265><source src="/assets/videos/video.mp4" type="video/mp4"></video></div>'
+        let domElement2 = this.add.dom(0, 0).createFromHTML(videoElem).setOrigin(0, 0).setPosition(300,75);
     }
 
     update() {

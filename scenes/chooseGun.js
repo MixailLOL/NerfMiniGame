@@ -16,6 +16,8 @@ class ChooseGun extends Phaser.Scene {
         background.depth = -3;
         let logo = this.add.image(28, 23 ,'logoSmall').setName("logo").setOrigin(0, 0);
         logo = -3;
+        //let beams = this.add.image(295, 235 ,'beams').setName("beams").setOrigin(0.5, 0.5);
+
         this.swipeDescription = this.add.text(275, 40, "choose your blaster then shoot the targets!", {color:'#ffffff',fontFamily: 'EuroStileOblique', fontSize: '20pt'}).setOrigin(0, 0);
         this.arrowRight = this.add.image(716, 172, "arrow").setInteractive().setOrigin(0, 0)
         .on('pointerdown', ()=>{ this.nextGun = (this.nextGun+1)%this.guns.length; this.viewNextGun(this.nextGun)});
@@ -38,6 +40,9 @@ class ChooseGun extends Phaser.Scene {
         .on('pointerover', () => this.buttonGoBack.setStyle({ backgroundColor: '#f47921' }))
         .on('pointerdown', ()=>{  this.scene.stop('ChooseGun'); this.scene.start('Menu')})
         .on('pointerout', () => this.buttonGoBack.setStyle({ backgroundColor: '#09d1e1' }));
+
+        let shadow = '<div style="border: 5px solid #09d1e1;width: 305px; height: 47px; background-color: #000000; opacity:0.7"; id="shadow" "></div>'
+        let domElement3 = this.add.dom(0,0).createFromHTML(shadow).setOrigin(0, 0).setPosition(242, 365);
     }
 
     update() {

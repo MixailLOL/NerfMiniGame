@@ -65,13 +65,13 @@ class ViewRange extends Phaser.Scene {
         }
         this.gun = this.add.image(265, 225, ''+this.guns[Math.abs(nextGun)]).setInteractive().setOrigin(0.5, 0.5);
 
-        var titleTextConfig={color:'#09d1e1',fontFamily: 'EuroStyleBold', fontSize: '28pt'};
+        var titleTextConfig={color:'#09d1e1',fontFamily: 'EuroStileBold', fontSize: '28pt'};
         var descTextConfig={color:'#ffffff',fontFamily: 'EuroStyleNormal', fontSize: '20pt'};
         let gunName = this.guns[Math.abs(nextGun)];
         this.gunTitle = this.add.text(576, 135, GunDesc[gunName][0], titleTextConfig)
         .setOrigin(0.5, 0.5)
         .setPadding(50, 10)
-        this.gunDescryptionText = this.add.text(576, 235, GunDesc[gunName][1], descTextConfig)
+        this.gunDescryptionText = this.add.text(576, 265, GunDesc[gunName][1], descTextConfig)
         .setOrigin(0.5, 0.5)
         .setPadding(50, 10)
     }
