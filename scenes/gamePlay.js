@@ -3,7 +3,8 @@ class GamePlay extends Phaser.Scene {
       super("GamePlay");
     }
     create(){
-        this.targets =[]
+        this.claimedPoints = 0;
+        this.targets ={}
         this.iniTime = Math.floor(this.game.loop.time/1000);
         this.time = 0;
         let background = this.add.image(0, 0 ,'bg').setName("Background").setOrigin(0, 0);
@@ -21,36 +22,42 @@ class GamePlay extends Phaser.Scene {
     }
 
     updateTime(){
-         this.timeText.setText('time:'+this.time+' secs')
+         this.timeText.setText('time:'+this.time+' secs');
+         this.scoreText.setText('score: '+this.claimedPoints);
          if(this.time==0){
             this.scene.stop('GamePlay'); 
             this.scene.start('GameEnd');
          }
          this.spawnTarget();
          for(let i in this.targets){
-            this.targets[i][0].scale *=0.99;
-            this.targets[i][1].setStyle({ fontSize: this.targets[i][1].style.fontSize.split(''+this.targets[i][1].style.fontSize.slice(-2))[0]*0.99+'pt'})
+            this.targets[i][0].scale *=0.995;
+            this.targets[i][1].setStyle({ fontSize: this.targets[i][1].style.fontSize.split(''+this.targets[i][1].style.fontSize.slice(-2))[0]*0.995+'pt'})
          }
     }
 
     spawnTarget(){
-        let targetPosW = Phaser.Math.Between(0, 800);
-        let targetPosH = Phaser.Math.Between(0, 450);
-        if(Phaser.Math.Between(1,10) == 10){
-            this.target = this.add.image(targetPosW,targetPosH,'targetBig').setOrigin(0.5,0.5).setScale(Phaser.Math.Between(1.0, 1.3))
-            .setInteractive()
-            .on('pointerdown', ()=>{this.targets.pop(); this.target.destroy(); this.targetText.destroy(); console.log("pop")});
-            this.targetText = this.add.text(targetPosW,targetPosH, ''+Phaser.Math.Between(50, 200), {color:'#ffffff',fontFamily: 'EurostileOblique', fontSize: '17.36pt'})
-            .setOrigin(0.5, 0.5);
-        }else{
-            this.target = this.add.image(targetPosW,targetPosH,'targetSmall').setOrigin(0.5,0.5).setScale(Phaser.Math.Between(1.0, 1.3))
-            .setInteractive()
-            .on('pointerdown', ()=>{this.targets.pop(); this.target.destroy(); this.targetText.destroy(); console.log("pop")});
-            this.targetText = this.add.text(targetPosW,targetPosH, ''+Phaser.Math.Between(1, 50), {color:'#ffffff',fontFamily: 'EurostileOblique', fontSize: '17.36pt'})
-            .setOrigin(0.5, 0.5);
+        let targetPosW = Phaser.Math.Between(80, 720);
+        let targetPosH = Phaser.Math.Between(110, 340);
+        if(Phaser.Math.Between(1,50) == 10){
+            let points = Phaser.Math.Between(1,20)*10;
+            let name = points+'target'+Phaser.Math.Between(1,99999);
+            if(points>100){
+                this.target = this.add.image(targetPosW,targetPosH,'targetBig').setOrigin(0.5,0.5).setScale(Phaser.Math.Between(1.0, 1.3))
+                .setInteractive()
+                .setName(name)
+                .on('pointerdown', ()=>{this.claimedPoints += Number((name.split('target'))[0]);this.targets[name][1].destroy();this.targets[name][0].destroy();delete this.targets[name]});
+                this.targetText = this.add.text(targetPosW,targetPosH, ''+points, {color:'#ffffff',fontFamily: 'EurostileOblique', fontSize: '17.36pt'})
+                .setOrigin(0.5, 0.5);
+            }else{
+                this.target = this.add.image(targetPosW,targetPosH,'targetSmall').setOrigin(0.5,0.5).setScale(Phaser.Math.Between(1.0, 1.3))
+                .setInteractive()
+                .setName(name)
+                .on('pointerdown', ()=>{this.claimedPoints += Number((name.split('target'))[0]);this.targets[name][1].destroy();this.targets[name][0].destroy();delete this.targets[name]});
+                this.targetText = this.add.text(targetPosW,targetPosH, ''+points, {color:'#ffffff',fontFamily: 'EurostileOblique', fontSize: '17.36pt'})
+                .setOrigin(0.5, 0.5);
+            }
+            this.targets[this.target.name] = [this.target,this.targetText];    
         }
-
-        this.targets.push([this.target,this.targetText]);    
     }
 }
 
