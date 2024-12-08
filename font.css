@@ -17,3 +17,9 @@
     font-family: EuroStyleNormal;
     src: url('./assets/fonts/EuroStyleNormal.ttf');
 }
+
+div{
+    user-select: none;
+    font-family: EuroStileBold;
+    font-size: 26px;
+}

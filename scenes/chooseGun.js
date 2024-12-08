@@ -10,8 +10,6 @@ class ChooseGun extends Phaser.Scene {
         this.guns = ['gunCommander', 'gunShockwave', 'gunEcho', 'gunVolt'];
         this.nextGun = 0;
         var BigButnTextConfig={color:'#02132a',fontFamily: 'EuroStileBold', fontSize: '25pt'};
-        this.viewNextGun(this.nextGun);
-
         let background = this.add.image(0, 0 ,'bgStart').setName("Background").setOrigin(0, 0);
         background.depth = -3;
         let logo = this.add.image(28, 23 ,'logoSmall').setName("logo").setOrigin(0, 0);
@@ -41,8 +39,9 @@ class ChooseGun extends Phaser.Scene {
         .on('pointerdown', ()=>{  this.scene.stop('ChooseGun'); this.scene.start('Menu')})
         .on('pointerout', () => this.buttonGoBack.setStyle({ backgroundColor: '#09d1e1' }));
 
-        let shadow = '<div style="border: 5px solid #09d1e1;width: 305px; height: 47px; background-color: #000000; opacity:0.7"; id="shadow" "></div>'
+        let shadow = '<div style="border: 5px solid #09d1e1;zIndex:0;width: 305px; height: 47px; background-color: #000000; opacity:0.7"; id="shadow" "></div>'
         let domElement3 = this.add.dom(0,0).createFromHTML(shadow).setOrigin(0, 0).setPosition(242, 365);
+        this.viewNextGun(this.nextGun);
     }
 
     update() {
@@ -68,12 +67,9 @@ class ChooseGun extends Phaser.Scene {
             this.gunTitle.destroy();
         }
         this.gun = this.add.image(400, 200, this.guns[Math.abs(nextGun)]+'Big').setOrigin(0.5, 0.5);
-
-        var titleTextConfig={color:'#ffffff',fontFamily: 'EuroStileBold', fontSize: '27pt'};
         let gunName = this.guns[Math.abs(nextGun)];
-        this.gunTitle = this.add.text(395, 389, GunDesc[gunName][0], titleTextConfig)
-        .setOrigin(0.5, 0.5)
-        .setPadding(50, 10)
+        let title = '<div style="color:white"; zIndex:10>'+GunDesc[gunName][0]+'</div>'
+        this.gunTitle = this.add.dom(0,0).createFromHTML(title).setOrigin(0.5, 0.5).setPosition(400, 392);
     }
 }
 
