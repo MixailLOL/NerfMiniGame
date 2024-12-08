@@ -2,6 +2,13 @@ class GamePlay extends Phaser.Scene {
     constructor() {
       super("GamePlay");
     }
+
+    init(data)
+    {
+        console.log('init', data);
+        this.gun = data.gun;
+    }
+
     create(){
         this.claimedPoints = 0;
         this.targets ={}
@@ -11,9 +18,9 @@ class GamePlay extends Phaser.Scene {
         background.depth = -3;
         let logo = this.add.image(28, 23 ,'logoSmall').setName("logo").setOrigin(0, 0);
         logo = -3;
-        this.swipeDescription = this.add.text(275, 30, "tap the targets to shoot as many as you can within the time limit!", {color:'#ffffff',fontFamily: 'EurostileOblique', fontSize: '20pt'}).setOrigin(0, 0);
-        this.timeText = this.add.text(664, 30, "time:", {color:'#09d1e1',fontFamily: 'EurostileOblique', fontSize: '16.78pt'}).setOrigin(0, 0);
-        this.scoreText = this.add.text(664, 50, "score:", {color:'#09d1e1',fontFamily: 'EurostileOblique', fontSize: '23.49pt'}).setOrigin(0, 0);
+        this.swipeDescription = this.add.text(275, 30, "tap the targets to shoot as many as you can within the time limit!", {color:'#ffffff',fontFamily: 'EuroStileOblique', fontSize: '20pt'}).setOrigin(0, 0);
+        this.timeText = this.add.text(664, 30, "time:", {color:'#09d1e1',fontFamily: 'EuroStileOblique', fontSize: '16.78pt'}).setOrigin(0, 0);
+        this.scoreText = this.add.text(664, 50, "score:", {color:'#09d1e1',fontFamily: 'EuroStileOblique', fontSize: '23.49pt'}).setOrigin(0, 0);
     }
 
     update(delta) {
@@ -26,7 +33,8 @@ class GamePlay extends Phaser.Scene {
          this.scoreText.setText('score: '+this.claimedPoints);
          if(this.time==0){
             this.scene.stop('GamePlay'); 
-            this.scene.start('GameEnd');
+            this.scene.start('GameEnd', { score: this.claimedPoints, gun: this.gun});
+
          }
          this.spawnTarget();
          for(let i in this.targets){
@@ -46,14 +54,14 @@ class GamePlay extends Phaser.Scene {
                 .setInteractive()
                 .setName(name)
                 .on('pointerdown', ()=>{this.claimedPoints += Number((name.split('target'))[0]);this.targets[name][1].destroy();this.targets[name][0].destroy();delete this.targets[name]});
-                this.targetText = this.add.text(targetPosW,targetPosH, ''+points, {color:'#ffffff',fontFamily: 'EurostileOblique', fontSize: '17.36pt'})
+                this.targetText = this.add.text(targetPosW,targetPosH, ''+points, {color:'#ffffff',fontFamily: 'EuroStileOblique', fontSize: '17.36pt'})
                 .setOrigin(0.5, 0.5);
             }else{
                 this.target = this.add.image(targetPosW,targetPosH,'targetSmall').setOrigin(0.5,0.5).setScale(Phaser.Math.Between(1.0, 1.3))
                 .setInteractive()
                 .setName(name)
                 .on('pointerdown', ()=>{this.claimedPoints += Number((name.split('target'))[0]);this.targets[name][1].destroy();this.targets[name][0].destroy();delete this.targets[name]});
-                this.targetText = this.add.text(targetPosW,targetPosH, ''+points, {color:'#ffffff',fontFamily: 'EurostileOblique', fontSize: '17.36pt'})
+                this.targetText = this.add.text(targetPosW,targetPosH, ''+points, {color:'#ffffff',fontFamily: 'EuroStileOblique', fontSize: '17.36pt'})
                 .setOrigin(0.5, 0.5);
             }
             this.targets[this.target.name] = [this.target,this.targetText];    

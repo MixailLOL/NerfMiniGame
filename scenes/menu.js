@@ -16,20 +16,22 @@ class Menu extends Phaser.Scene {
         guns.setOrigin(0, 0);
         guns.depth = -2;
 
-        var textConfig={color:'#02132a',fontFamily: 'EurostileBold', fontSize: '28pt'};
+        var textConfig={color:'#02132a',fontFamily: 'EuroStileBold', fontSize: '25pt'};
 
         this.buttonPlay = this.add.text(0, 300, "PLAY MINIGAME", textConfig).setInteractive()
-        .setStyle({ backgroundColor: '#09d1e1' })
+        .setStyle({ backgroundColor: '#09d1e1'})
         .setOrigin(0, 0)
-        .setPadding(50, 10)
+        .setPadding(70, 10)
         .on('pointerover', () => this.buttonPlay.setStyle({ backgroundColor: '#f47921' }))
         .on('pointerdown', ()=>{  this.scene.stop('Menu'); this.scene.start('ChooseGun')})
         .on('pointerout', () => this.buttonPlay.setStyle({ backgroundColor: '#09d1e1' }));
+        //this.buttonPlay.displayWidth = 387;
+        //this.buttonPlay.displayHeight = 57;
 
         this.buttonViewRange = this.add.text(0, 365, "VIEW RANGE", textConfig).setInteractive()
         .setStyle({ backgroundColor: '#09d1e1'})
         .setOrigin(0, 0)
-        .setPadding(50, 10)
+        .setPadding(97, 10)
         .on('pointerover', () => this.buttonViewRange.setStyle({ backgroundColor: '#f47921' }))
         .on('pointerdown', ()=>{  this.scene.stop('Menu'); this.scene.start('ViewRange')})
         .on('pointerout', () => this.buttonViewRange.setStyle({ backgroundColor: '#09d1e1' }));
@@ -37,7 +39,7 @@ class Menu extends Phaser.Scene {
         this.buttonWatchVideo = this.add.text(800, 300, "WATCH VIDEO", textConfig).setInteractive()
         .setStyle({ backgroundColor: '#09d1e1' })
         .setOrigin(1, 0)
-        .setPadding(50, 10)
+        .setPadding(79, 10)
         .on('pointerover', () => this.buttonWatchVideo.setStyle({ backgroundColor: '#f47921' }))
         .on('pointerdown', ()=>{  this.showVideo()})
         .on('pointerout', () => this.buttonWatchVideo.setStyle({ backgroundColor: '#09d1e1' }));
@@ -45,12 +47,13 @@ class Menu extends Phaser.Scene {
         this.buttonVisitNerf = this.add.text(800, 365, "VISIT NERF", textConfig).setInteractive()
         .setStyle({ backgroundColor: '#09d1e1'})
         .setOrigin(1, 0)
-        .setPadding(50, 10)
+        .setPadding(104, 10)
         .on('pointerover', () => this.buttonVisitNerf.setStyle({ backgroundColor: '#f47921' }))
         .on('pointerdown', ()=>{ console.log("ok")})
         .on('pointerout', () => this.buttonVisitNerf.setStyle({ backgroundColor: '#09d1e1' }));
 
-        this.textDescription = this.add.text(425, 50, "choose your blaster then shoot as many\ntargets as you can within the time limit!", {color:'#ffffff', fontFamily: 'EurostileOblique', fontSize: '15.94pt'}).setOrigin(0, 0);
+        this.textDescription = this.add.text(425, 50, "choose your blaster then shoot as many\ntargets as you can within the time limit!", {color:'#ffffff', fontFamily: 'EuroStileOblique', fontSize: '15.94pt'})
+        .setOrigin(0, 0);
     }
 
     showVideo (){

@@ -9,14 +9,14 @@ class ChooseGun extends Phaser.Scene {
         this.gun;
         this.guns = ['gunCommander', 'gunShockwave', 'gunEcho', 'gunVolt'];
         this.nextGun = 0;
-        var BigButnTextConfig={color:'#02132a',fontFamily: 'EurostileBold', fontSize: '25pt'};
+        var BigButnTextConfig={color:'#02132a',fontFamily: 'EuroStileBold', fontSize: '25pt'};
         this.viewNextGun(this.nextGun);
 
         let background = this.add.image(0, 0 ,'bgStart').setName("Background").setOrigin(0, 0);
         background.depth = -3;
         let logo = this.add.image(28, 23 ,'logoSmall').setName("logo").setOrigin(0, 0);
         logo = -3;
-        this.swipeDescription = this.add.text(275, 40, "choose your blaster then shoot the targets!", {color:'#ffffff',fontFamily: 'EurostileOblique', fontSize: '20pt'}).setOrigin(0, 0);
+        this.swipeDescription = this.add.text(275, 40, "choose your blaster then shoot the targets!", {color:'#ffffff',fontFamily: 'EuroStileOblique', fontSize: '20pt'}).setOrigin(0, 0);
         this.arrowRight = this.add.image(716, 172, "arrow").setInteractive().setOrigin(0, 0)
         .on('pointerdown', ()=>{ this.nextGun = (this.nextGun+1)%this.guns.length; this.viewNextGun(this.nextGun)});
         this.arrowLeft = this.add.image(42, 172, "arrow").setInteractive().setOrigin(0, 0)
@@ -26,15 +26,15 @@ class ChooseGun extends Phaser.Scene {
         this.playGame = this.add.text(800, 365, "PLAY GAME", BigButnTextConfig).setInteractive()
         .setStyle({ backgroundColor: '#09d1e1'})
         .setOrigin(1, 0)
-        .setPadding(50, 10)
+        .setPadding(22, 10)
         .on('pointerover', () => this.playGame.setStyle({ backgroundColor: '#f47921' }))
-        .on('pointerdown', ()=>{ this.scene.stop('ChooseGun'); this.scene.start('GamePlay')})
+        .on('pointerdown', ()=>{ this.scene.stop('ChooseGun'); this.scene.start('GamePlay', {gun:this.guns[Math.abs(this.nextGun)]})})
         .on('pointerout', () => this.playGame.setStyle({ backgroundColor: '#09d1e1' }));
 
         this.buttonGoBack = this.add.text(0, 365, "GO BACK", BigButnTextConfig).setInteractive()
         .setStyle({ backgroundColor: '#09d1e1'})
         .setOrigin(0, 0)
-        .setPadding(50, 10)
+        .setPadding(43, 10)
         .on('pointerover', () => this.buttonGoBack.setStyle({ backgroundColor: '#f47921' }))
         .on('pointerdown', ()=>{  this.scene.stop('ChooseGun'); this.scene.start('Menu')})
         .on('pointerout', () => this.buttonGoBack.setStyle({ backgroundColor: '#09d1e1' }));
@@ -62,9 +62,9 @@ class ChooseGun extends Phaser.Scene {
             this.gun.destroy();
             this.gunTitle.destroy();
         }
-        this.gun = this.add.image(400, 200, this.guns[Math.abs(nextGun)]+'Big').setInteractive().setOrigin(0.5, 0.5);
+        this.gun = this.add.image(400, 200, this.guns[Math.abs(nextGun)]+'Big').setOrigin(0.5, 0.5);
 
-        var titleTextConfig={color:'#ffffff',fontFamily: 'Eurostile', fontSize: '27pt'};
+        var titleTextConfig={color:'#ffffff',fontFamily: 'EuroStileBold', fontSize: '27pt'};
         let gunName = this.guns[Math.abs(nextGun)];
         this.gunTitle = this.add.text(395, 389, GunDesc[gunName][0], titleTextConfig)
         .setOrigin(0.5, 0.5)
