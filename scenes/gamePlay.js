@@ -51,7 +51,7 @@ class GamePlay extends Phaser.Scene {
     spawnTarget(){
         let targetPosW = Phaser.Math.Between(80, 720);
         let targetPosH = Phaser.Math.Between(110, 340);
-        if(Phaser.Math.Between(1,50) == 10){
+        if(Phaser.Math.Between(1,20+Reflect.ownKeys(this.targets).length*15) == 1){
             let points = Phaser.Math.Between(1,20)*10;
             let name = points+'target'+Phaser.Math.Between(1,99999);
             if(points>100){
