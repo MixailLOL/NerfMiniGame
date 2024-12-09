@@ -16,11 +16,11 @@ class GameEnd extends Phaser.Scene {
         background.depth = -3;
         let logo = this.add.image(28, 23 ,'logoSmall').setName("logo").setOrigin(0, 0);
         logo = -3;
-        this.description = this.add.text(355, 35, "awesome! now check out the video", {color:'#ffffff',fontFamily: 'EuroStileOblique', fontSize: '23.82pt'}).setOrigin(0, 0);
-        this.scoreText = this.add.text(135, 250, "your score: ", {color:'#ffffff',fontFamily: 'EuroStileOblique', fontSize: '23.82pt'}).setOrigin(0, 0);
-        this.scoreScore = this.add.text(140, 280, ""+this.score, {color:'#09d1e1',fontFamily: 'EuroStileOblique', fontSize: '64.41pt'}).setOrigin(0, 0);
+        this.description = this.add.text(355, 30, "AWESOME! NOW CHECK OUT THE VIDEO", {color:'#ffffff',fontFamily: 'EurostileOblique', fontSize: '16pt'}).setOrigin(0, 0);
+        this.scoreText = this.add.text(280, 250, "YOUR SCORE: ", {color:'#ffffff',fontFamily: 'EurostileOblique', fontSize: '18pt'}).setOrigin(1, 0);
+        this.scoreScore = this.add.text(280, 270, ""+this.score, {color:'#09d1e1',fontFamily: 'EurostileOblique', fontSize: '60pt'}).setOrigin(1, 0);
 
-        this.gunImg = this.add.image(150, 200, this.gun).setOrigin(0.5, 0.5);
+        this.gunImg = this.add.image(150, 185, this.gun).setOrigin(0.5, 0.5);
 
         var BigButnTextConfig={color:'#02132a',fontFamily: 'EuroStileBold', fontSize: '25pt'};
         this.buttonVisitNerf = this.add.text(800, 365, "VISIT NERF", BigButnTextConfig).setInteractive()
@@ -28,7 +28,7 @@ class GameEnd extends Phaser.Scene {
         .setOrigin(1, 0)
         .setPadding(50, 10)
         .on('pointerover', () => this.buttonVisitNerf.setStyle({ backgroundColor: '#f47921' }))
-        .on('pointerdown', ()=>{ console.log("lol")})
+        .on('pointerdown', ()=>{window.location.href = 'https://brest.rabota.by/resume/47a09021ff0dfe3afe0039ed1f61657347574b'})
         .on('pointerout', () => this.buttonVisitNerf.setStyle({ backgroundColor: '#09d1e1' }));
 
         this.buttonGoBack = this.add.text(0, 365, "GO BACK", BigButnTextConfig).setInteractive()

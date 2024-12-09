@@ -49,10 +49,10 @@ class Menu extends Phaser.Scene {
         .setOrigin(1, 0)
         .setPadding(104, 10)
         .on('pointerover', () => this.buttonVisitNerf.setStyle({ backgroundColor: '#f47921' }))
-        .on('pointerdown', ()=>{ console.log("ok")})
+        .on('pointerdown', ()=>{( window.location.href = 'https://brest.rabota.by/resume/47a09021ff0dfe3afe0039ed1f61657347574b')})
         .on('pointerout', () => this.buttonVisitNerf.setStyle({ backgroundColor: '#09d1e1' }));
 
-        this.textDescription = this.add.text(425, 50, "choose your blaster then shoot as many\ntargets as you can within the time limit!", {color:'#ffffff', fontFamily: 'EuroStileOblique', fontSize: '15.94pt'})
+        this.textDescription = this.add.text(425, 42, "CHOOSE YOUR BLASTER THEN SHOOT AS MANY\nTARGETS AS YOU CAN WITHIN THE TIME LIMIT!", {color:'#ffffff', fontFamily: 'EurostileOblique', fontSize: '12.5pt'})
         .setOrigin(0, 0);
     }
 

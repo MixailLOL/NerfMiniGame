@@ -3,23 +3,14 @@
     src: url('./assets/fonts/EuroStileBold.ttf');
 }
 
-@font-face {
-    font-family: EurostileExtended;
-    src: url('./assets/fonts/EuroStileExtended.ttf');
-}
 
 @font-face {
-    font-family: EurostileOblique;
-    src: url('./assets/fonts/EuroStileOblique.ttf');
-}
-
-@font-face {
-    font-family: EuroStyleNormal;
-    src: url('./assets/fonts/EuroStyleNormal.ttf');
+    font-family: 'EurostileOblique';
+    src: url('./assets/fonts/EurostileOblique.otf') format("opentype");;
 }
 
 div{
     user-select: none;
-    font-family: EuroStileBold;
+    font-family: EurostileOblique;
     font-size: 26px;
 }

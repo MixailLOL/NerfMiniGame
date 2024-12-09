@@ -16,7 +16,7 @@ class ChooseGun extends Phaser.Scene {
         logo = -3;
         //let beams = this.add.image(295, 235 ,'beams').setName("beams").setOrigin(0.5, 0.5);
 
-        this.swipeDescription = this.add.text(275, 40, "choose your blaster then shoot the targets!", {color:'#ffffff',fontFamily: 'EuroStileOblique', fontSize: '20pt'}).setOrigin(0, 0);
+        this.swipeDescription = this.add.text(275, 40, "CHOOSE YOR BLASTER THEN SHOOT THE TARGETS!", {color:'#ffffff',fontFamily: 'EurostileOblique', fontSize: '16pt'}).setOrigin(0, 0);
         this.arrowRight = this.add.image(716, 172, "arrow").setInteractive().setOrigin(0, 0)
         .on('pointerdown', ()=>{ this.nextGun = (this.nextGun+1)%this.guns.length; this.viewNextGun(this.nextGun)});
         this.arrowLeft = this.add.image(42, 172, "arrow").setInteractive().setOrigin(0, 0)
@@ -68,8 +68,8 @@ class ChooseGun extends Phaser.Scene {
         }
         this.gun = this.add.image(400, 200, this.guns[Math.abs(nextGun)]+'Big').setOrigin(0.5, 0.5);
         let gunName = this.guns[Math.abs(nextGun)];
-        let title = '<div style="color:white"; zIndex:10>'+GunDesc[gunName][0]+'</div>'
-        this.gunTitle = this.add.dom(0,0).createFromHTML(title).setOrigin(0.5, 0.5).setPosition(400, 392);
+        let title = '<div style="color:white"; zIndex:10; fontFamily:EurostileOblique>'+GunDesc[gunName][0]+'</div>'
+        this.gunTitle = this.add.dom(0,0).createFromHTML(title).setOrigin(0.5, 0.5).setPosition(398, 391);
     }
 }
 

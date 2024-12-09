@@ -18,9 +18,9 @@ class GamePlay extends Phaser.Scene {
         background.depth = -3;
         let logo = this.add.image(28, 23 ,'logoSmall').setName("logo").setOrigin(0, 0);
         logo = -3;
-        this.swipeDescription = this.add.text(275, 30, "tap the targets to shoot as many as you can within the time limit!", {color:'#ffffff',fontFamily: 'EuroStileOblique', fontSize: '20pt'}).setOrigin(0, 0);
-        this.timeText = this.add.text(664, 30, "time:", {color:'#09d1e1',fontFamily: 'EuroStileOblique', fontSize: '16.78pt'}).setOrigin(0, 0);
-        this.scoreText = this.add.text(664, 50, "score:", {color:'#09d1e1',fontFamily: 'EuroStileOblique', fontSize: '23.49pt'}).setOrigin(0, 0);
+        this.swipeDescription = this.add.text(275, 24, "TAP THE TARGETS TO SHOOT AS MANY\nAS YOU CAN WITHIN THE TIME LIMIT!", {color:'#ffffff',fontFamily: 'EurostileOblique', fontSize: '15pt',textShadow: '0 0 6px rgb(0, 0, 0)'}).setOrigin(0, 0);
+        this.timeText = this.add.text(640, 24, "TIME:", {color:'#09d1e1',fontFamily: 'EurostileOblique', fontSize: '14pt',textShadow: '0 0 6px rgb(0, 0, 0)'}).setOrigin(0, 0);
+        this.scoreText = this.add.text(640, 44, "SCORE:", {color:'#09d1e1',fontFamily: 'EurostileOblique', fontSize: '20pt',textShadow: '0 0 5px rgb(0, 0, 0)'}).setOrigin(0, 0);
     }
 
     update(delta) {
@@ -29,8 +29,8 @@ class GamePlay extends Phaser.Scene {
     }
 
     updateTime(){
-         this.timeText.setText('time:'+this.time+' secs');
-         this.scoreText.setText('score: '+this.claimedPoints);
+         this.timeText.setText('TIME:'+this.time+' SECS');
+         this.scoreText.setText('SCORE:'+this.claimedPoints);
          if(this.time==0){
             this.scene.stop('GamePlay'); 
             this.scene.start('GameEnd', { score: this.claimedPoints, gun: this.gun});
@@ -40,6 +40,11 @@ class GamePlay extends Phaser.Scene {
          for(let i in this.targets){
             this.targets[i][0].scale *=0.995;
             this.targets[i][1].setStyle({ fontSize: this.targets[i][1].style.fontSize.split(''+this.targets[i][1].style.fontSize.slice(-2))[0]*0.995+'pt'})
+            if(this.targets[i][0].scale <= 0.5){
+                this.targets[i][1].destroy();
+                this.targets[i][0].destroy();
+                delete this.targets[i]
+            }
          }
     }
 

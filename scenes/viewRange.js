@@ -16,7 +16,7 @@ class ViewRange extends Phaser.Scene {
         background.depth = -3;
         let logo = this.add.image(28, 23 ,'logoSmall').setName("logo").setOrigin(0, 0);
         logo = -3;
-        this.swipeDescription = this.add.text(310, 40, "swipe left and right to view the range!", {color:'#ffffff',fontFamily: 'EuroStileOblique', fontSize: '20pt'}).setOrigin(0, 0);
+        this.swipeDescription = this.add.text(310, 36, "SWIPE LEFT AND RIGHT TO VIEW THE RANGE!", {color:'#ffffff',fontFamily: 'EurostileOblique', fontSize: '15.7pt'}).setOrigin(0, 0);
         this.arrowRight = this.add.image(716, 172, "arrow").setInteractive().setOrigin(0, 0)
         .on('pointerdown', ()=>{ this.nextGun = (this.nextGun+1)%this.guns.length; this.viewNextGun(this.nextGun)});
         this.arrowLeft = this.add.image(42, 172, "arrow").setInteractive().setOrigin(0, 0)
@@ -63,10 +63,10 @@ class ViewRange extends Phaser.Scene {
             this.gunTitle.destroy();
             this.gunDescryptionText.destroy();
         }
-        this.gun = this.add.image(265, 225, ''+this.guns[Math.abs(nextGun)]).setInteractive().setOrigin(0.5, 0.5);
+        this.gun = this.add.image(265, 195, ''+this.guns[Math.abs(nextGun)]).setInteractive().setOrigin(0.5, 0.5);
 
-        var titleTextConfig={color:'#09d1e1',fontFamily: 'EuroStileBold', fontSize: '28pt'};
-        var descTextConfig={color:'#ffffff',fontFamily: 'EuroStyleNormal', fontSize: '20pt'};
+        var titleTextConfig={color:'#09d1e1',fontFamily: 'EurostileOblique', fontSize: '28pt'};
+        var descTextConfig={color:'#ffffff',fontFamily: 'EurostileOblique', fontSize: '14.5pt'};
         let gunName = this.guns[Math.abs(nextGun)];
         this.gunTitle = this.add.text(576, 135, GunDesc[gunName][0], titleTextConfig)
         .setOrigin(0.5, 0.5)
