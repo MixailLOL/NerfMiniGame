@@ -20,7 +20,7 @@ class GameEnd extends Phaser.Scene {
         this.scoreText = this.add.text(280, 250, "YOUR SCORE: ", {color:'#ffffff',fontFamily: 'EurostileOblique', fontSize: '18pt'}).setOrigin(1, 0);
         this.scoreScore = this.add.text(280, 270, ""+this.score, {color:'#09d1e1',fontFamily: 'EurostileOblique', fontSize: '60pt'}).setOrigin(1, 0);
 
-        this.gunImg = this.add.image(150, 185, this.gun).setOrigin(0.5, 0.5);
+        this.gunImg = this.add.image(150, 165, this.gun).setOrigin(0.5, 0.5);
 
         var BigButnTextConfig={color:'#02132a',fontFamily: 'EuroStileBold', fontSize: '25pt'};
         this.buttonVisitNerf = this.add.text(800, 365, "VISIT NERF", BigButnTextConfig).setInteractive()

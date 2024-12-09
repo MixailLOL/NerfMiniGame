@@ -28,6 +28,7 @@ class Splash extends Phaser.Scene {
         this.load.image('logo', 'assets/logo.png');
         this.load.image('menuGuns', 'assets/menuGuns.png');
         this.load.image('arrow', 'assets/arrow.png');
+        this.load.image('arrowO', 'assets/arrowO.png');
         this.load.image('gunCommander', 'assets/guns/commander.png');
         this.load.image('gunShockwave', 'assets/guns/shockwave.png');
         this.load.image('gunEcho', 'assets/guns/echo.png');
